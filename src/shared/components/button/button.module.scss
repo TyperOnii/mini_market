@@ -1,0 +1,20 @@
+.base {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.primary {
+    background-color: var(--c-primary);
+    border-radius: 20px;
+    color: white;
+    height: 40px;
+    padding-inline: 15px;
+    width: 100%;
+    transition: opacity .3s;
+
+    &:hover {
+        opacity: .8;
+    }
+}

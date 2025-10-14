@@ -1,0 +1,32 @@
+@use '@/shared/styles/media.scss';
+
+.header {
+    background-color: var(--c-primary);
+    padding-block: 15px;
+
+    &_inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--c-white);
+        font-weight: 500;
+    }
+}
+
+.header_menu_list {
+    display: flex;
+    align-items: center;
+    column-gap: 25px;
+
+    @include media.mobile {
+        column-gap: 10px;
+    }
+}
+
+.counter {
+    display: inline-block;
+    padding-inline: 8px;
+    background-color: var(--c-white);
+    color: var(--c-black); 
+    border-radius: 50%;
+}

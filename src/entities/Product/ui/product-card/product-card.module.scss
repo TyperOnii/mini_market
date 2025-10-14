@@ -1,0 +1,33 @@
+.productImage {
+    width: 100%;
+}
+
+.ratingWrap {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.priceWrap {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.reviewsInfo {
+    color: var(--c-grey);
+}
+
+.discountPrice {
+    color: var(--c-primary);
+    font-weight: 500;
+}
+
+.price, .rating {
+    font-weight: 600;
+}
+
+.priceLined {
+    color: var(--c-grey);
+    text-decoration: line-through;
+}

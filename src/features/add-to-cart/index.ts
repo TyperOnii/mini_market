@@ -1,0 +1,1 @@
+export { BuyerProductCard } from './ui/buyer-product-card'

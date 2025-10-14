@@ -1,4 +1,6 @@
+import { Header } from "@/widgets/header";
 import "./globals.css";
+import '@/shared/styles/index.scss'
 
 export default function RootLayout({
   children,
@@ -8,7 +10,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <Header/>
+        <main>{children}</main>
       </body>
     </html>
   );
