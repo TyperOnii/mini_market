@@ -4,7 +4,7 @@ import s from './button.module.scss'
 
 interface ButtonProps extends  DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     children?: ReactNode,
-    variant: 'primary',
+    variant: 'primary' | 'secondary',
 }
 
 export const Button = (props: ButtonProps) => {
@@ -12,6 +12,7 @@ export const Button = (props: ButtonProps) => {
 
     const styles = clsx(s.base, {
         [s.primary]: variant === 'primary',
+        [s.secondary]: variant === 'secondary',
     });
     
     return (

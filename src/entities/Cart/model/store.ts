@@ -6,14 +6,15 @@ class CartStore {
     cartItems: CartItem[] = [];
     
     constructor() {
-        // makeAutoObservable(this)
         makeObservable(this, {
             cartItems: observable,
+            existenceCheck: observable,
+            getCurrentPrice: observable,
+            getMainInfoAboutCartItem: observable,
             isEmpty: computed,
             uniqueItemsCount: computed,
             totalQuantity: computed,
             totalPrice: computed,
-            existenceCheck: observable,
             addCartItem: action,
             increaseCartItem: action,
             decreaseCartItem: action,
@@ -22,6 +23,7 @@ class CartStore {
         })
     };
 
+    // проверка на пустую корзину
     get isEmpty(): boolean {
         return this.cartItems.length === 0;
     };
@@ -41,8 +43,29 @@ class CartStore {
     // проверка на существование товара в корзине по id
     existenceCheck = (id: number): boolean => {
         return this.cartItems.some((product) => product.id === id)
-    }
+    };
 
+    // получить актуальную цену
+    getCurrentPrice = (id: number): number => {
+        const item = this.cartItems.find((product) => product.id === id) as CartItem;
+        
+        if(item.discountedPrice) {
+            return item.discountedPrice
+        }
+        return item.price;
+    };
+
+    // удобный объект для UI по конкретному товару в корзине
+    getMainInfoAboutCartItem = (id: number) => {
+        const item = this.cartItems.find((product) => product.id === id) as CartItem;
+
+        return {
+            totalPrice: this.getCurrentPrice(id) * item.quantity,
+            totalQuantity: item.quantity,
+        }
+    };
+
+    // добавить товар в корзину
     addCartItem = (product: Product) => {
         const existingItem = this.cartItems.find(item => item.id === product.id);
 
@@ -53,6 +76,7 @@ class CartStore {
         }
     };
 
+    // увеличить кол-во товара
     increaseCartItem = (id: number) => {
         const item = this.cartItems.find((product) => product.id === id);
 
@@ -61,6 +85,7 @@ class CartStore {
         item.quantity += 1;
     };
 
+    // уменьшить кол-во товара
     decreaseCartItem = (id: number) => {
         const item = this.cartItems.find(product => product.id === id);
 
@@ -73,10 +98,12 @@ class CartStore {
         }
     };
 
+    // удалить товар из корзины
     removeCartItem = (id: number) => {
         this.cartItems = this.cartItems.filter(product => product.id !== id);
     };
 
+    // удалить все товары из корзины
     removeAllCartItems = () => {
         this.cartItems = [];
     };

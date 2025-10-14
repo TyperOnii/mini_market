@@ -12,7 +12,7 @@ export const Header = observer(() => {
     return (
         <header className={s.header}>
             <div className={clsx(s.header_inner, 'container')}>
-                <span className={s.title}>Барахолка «Красная Цена, Моя Цена» - матурым так сказала</span>
+                <span className={s.title}>red</span>
                 <nav className={s.header_menu}>
                     <ul className={s.header_menu_list}>
                         <li>
@@ -25,7 +25,7 @@ export const Header = observer(() => {
                             <Link href='/'>Профиль</Link>
                         </li>
                         <li>
-                            <Link href='/'>Корзина <span className={s.counter}>{!isEmpty && totalQuantity}</span></Link>
+                            <Link href='/cart'>Корзина <span className={s.counter}>{!isEmpty && totalQuantity}</span></Link>
                         </li>
                     </ul>
                 </nav>

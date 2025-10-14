@@ -1,0 +1,35 @@
+@use '@/shared/styles/media.scss';
+
+.card {
+    border-radius: 20px;
+    padding: 10px;
+
+    &Inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 4px;
+    }
+
+    @include media.mobile {
+        padding: 4px;
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Устанавливает максимальное количество строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 300px;
+
+    @include media.mobile {
+        width: 100px;
+    }
+}

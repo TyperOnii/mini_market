@@ -38,16 +38,17 @@ export const ProductCard = (props: ProductCardProps) => {
                     <div className={s.priceWrap}>
                         {renderPrice()}
                     </div>
-                    <h3>{item.name}</h3>
+                    <h3 className={s.title}>{item.name}</h3>
                     <div className={s.ratingWrap}>
                         <span className={s.rating} aria-label={`Рейтинг товара: ${item.rating}`}>{item.rating}</span>
                         <span className={s.reviewsInfo} aria-label={`Отзывы товара: ${item.reviewsCount ?? 0}`}>{item.reviewsCount ?? 0} Отзывов</span>
                     </div>
                 </div>
             </Link>
+
             
             {actionSlot && 
-            <div className="mt-4">
+            <div className="mt-auto">
                 {actionSlot}
             </div>}
         </article>

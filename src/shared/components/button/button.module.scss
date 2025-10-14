@@ -7,8 +7,17 @@
 
 .primary {
     background-color: var(--c-primary);
-    border-radius: 20px;
     color: white;
+}
+
+.secondary {
+    background-color: var(--c-white);
+    color: var(--c-primary);
+    border: 1px solid var(--c-primary);
+}
+
+.primary, .secondary {
+    border-radius: 20px;
     height: 40px;
     padding-inline: 15px;
     width: 100%;
