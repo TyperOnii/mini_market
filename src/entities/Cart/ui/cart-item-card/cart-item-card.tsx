@@ -13,8 +13,8 @@ interface CartItemCardProps {
 
 export const CartItemCard = observer((props: CartItemCardProps) => {
     const { item } = props;
-    const { getMainInfoAboutCartItem, increaseCartItem, decreaseCartItem } = CartStore;
-    const { totalPrice, totalQuantity } = getMainInfoAboutCartItem(item.id);
+    const { getCartItemDetails, increaseCartItem, decreaseCartItem } = CartStore;
+    const { totalPrice, totalQuantity } = getCartItemDetails(item.id);
 
     return (
         <article className={s.card}>
@@ -23,6 +23,7 @@ export const CartItemCard = observer((props: CartItemCardProps) => {
                 <div className={s.infoWrap}>
                     <h3 className={s.title}>{item.name}</h3>
                 </div>
+                
                 <div className={s.actions}>
                     <Button onClick={() => decreaseCartItem(item.id)} variant='secondary'>-</Button>
                     <span>{totalQuantity}</span>

@@ -10,7 +10,7 @@ class CartStore {
             cartItems: observable,
             existenceCheck: observable,
             getCurrentPrice: observable,
-            getMainInfoAboutCartItem: observable,
+            getCartItemDetails: observable,
             isEmpty: computed,
             uniqueItemsCount: computed,
             totalQuantity: computed,
@@ -42,12 +42,12 @@ class CartStore {
 
     // проверка на существование товара в корзине по id
     existenceCheck = (id: number): boolean => {
-        return this.cartItems.some((product) => product.id === id)
+        return this.cartItems.some(product => product.id === id)
     };
 
     // получить актуальную цену
     getCurrentPrice = (id: number): number => {
-        const item = this.cartItems.find((product) => product.id === id) as CartItem;
+        const item = this.cartItems.find(product => product.id === id) as CartItem;
         
         if(item.discountedPrice) {
             return item.discountedPrice
@@ -55,9 +55,9 @@ class CartStore {
         return item.price;
     };
 
-    // удобный объект для UI по конкретному товару в корзине
-    getMainInfoAboutCartItem = (id: number) => {
-        const item = this.cartItems.find((product) => product.id === id) as CartItem;
+    // получить детали о товаре
+    getCartItemDetails = (id: number) => {
+        const item = this.cartItems.find(product => product.id === id) as CartItem;
 
         return {
             totalPrice: this.getCurrentPrice(id) * item.quantity,
@@ -78,7 +78,7 @@ class CartStore {
 
     // увеличить кол-во товара
     increaseCartItem = (id: number) => {
-        const item = this.cartItems.find((product) => product.id === id);
+        const item = this.cartItems.find(product => product.id === id);
 
         if (!item) return;
 
