@@ -1,17 +1,21 @@
+'use client'
+
 import s from './wishlist-items-list.module.scss'
 import { ReactNode } from 'react'
 import { Product } from '@/entities/Product';
+import { WishlistStore } from '../..';
+import { observer } from 'mobx-react';
 
 interface WishlistItemsListProps {
-    products: Product[],
     renderCard: (product: Product) => ReactNode,
     searchQuery?: string,
 }
 
-export const WishlistItemsList = (props: WishlistItemsListProps) => {
-    const { products, searchQuery, renderCard} = props;
+export const WishlistItemsList = observer((props: WishlistItemsListProps) => {
+    const { searchQuery, renderCard} = props;
+    const { wishList } = WishlistStore;
 
-    if(products.length === 0) {
+    if(wishList.length === 0) {
         return (
             <div className={s.emptyState}>
                 {searchQuery ? (
@@ -27,7 +31,7 @@ export const WishlistItemsList = (props: WishlistItemsListProps) => {
         <ul 
             className={s.list}
             aria-label='Список товаров'>
-            {products.map((product) => (
+            {wishList.map((product) => (
                 <li 
                     key={product.id}
                     aria-label='Товар'>
@@ -36,4 +40,4 @@ export const WishlistItemsList = (props: WishlistItemsListProps) => {
             ))}
         </ul>
     )
-}
+})

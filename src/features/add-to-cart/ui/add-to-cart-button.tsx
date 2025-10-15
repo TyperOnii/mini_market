@@ -23,7 +23,7 @@ export const AddToCartButton = observer((props: AddToCartButtonProps) => {
         addCartItem(item);
     }
 
-    const buttonStyle = isProductInCart ? 'secondary' : 'primary';
+    const buttonStyle = isProductInCart ? 'primary' : 'secondary';
     const buttonLabel = isProductInCart ? 'Удалить' : 'В корзину';
 
     return (

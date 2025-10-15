@@ -1,8 +1,7 @@
 'use client'
 
-import { WishlistItemsList, WishlistStore } from "@/entities/Wishlist"
+import { WishlistItemsList } from "@/entities/Wishlist"
 import { BuyerProductCard } from "@/widgets/buyer-product-card";
-import { observer } from "mobx-react";
 import { Metadata } from "next"
 
 // export const metadata: Metadata = {
@@ -11,8 +10,7 @@ import { Metadata } from "next"
 //     keywords: ['вишлист', 'вишлист товаров', 'товары', 'избранное', 'отложенное'],
 // }
 
-const WishlistPage = observer(() => {
-    const { wishList } = WishlistStore;
+const WishlistPage = () => {
 
     return (
         <section>
@@ -22,7 +20,6 @@ const WishlistPage = observer(() => {
                 </div>
                 <div className="mt-8">
                     <WishlistItemsList 
-                        products={wishList} 
                         renderCard={(product) => <BuyerProductCard product={product} 
                         path='/'/>}
                     />
@@ -30,6 +27,6 @@ const WishlistPage = observer(() => {
             </div>
         </section>
     )
-})
+}
 
 export default WishlistPage;
