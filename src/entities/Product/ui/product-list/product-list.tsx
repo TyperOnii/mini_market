@@ -16,7 +16,7 @@ export const ProductList = (props: ProductListProps) => {
         list, 
         searchQuery, 
         path, 
-        renderCard= (product) => <ProductCard item={product} path={path}/> 
+        renderCard= (product) => <ProductCard product={product} path={path}/> 
     } = props;
 
     if(list.length === 0) {

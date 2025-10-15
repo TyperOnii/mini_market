@@ -6,21 +6,21 @@ import { Button } from "@/shared/components/button/button";
 import { observer } from "mobx-react";
 
 interface AddToCartButtonProps {
-    item: Product,
+    product: Product,
 }
 
 export const AddToCartButton = observer((props: AddToCartButtonProps) => {
-    const { item } = props;
+    const { product } = props;
     const { addCartItem, removeCartItem, existenceCheck } = CartStore;
 
-    const isProductInCart = existenceCheck(item.id);
+    const isProductInCart = existenceCheck(product.id);
 
     const handleClick = () => {
         if(isProductInCart) {
-            removeCartItem(item.id);
+            removeCartItem(product.id);
             return
         }
-        addCartItem(item);
+        addCartItem(product);
     }
 
     const buttonStyle = isProductInCart ? 'primary' : 'secondary';

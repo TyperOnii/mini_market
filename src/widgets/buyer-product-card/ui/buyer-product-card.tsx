@@ -15,13 +15,13 @@ export const BuyerProductCard = (props: BuyerProductCardProps) => {
 
     const actionSlot = 
     <div className="grid grid-cols-[1fr_50px] gap-x-[6px]">
-        <AddToCartButton item={product}/>
+        <AddToCartButton product={product}/>
         <AddToWishlistButton product={product}/>
     </div>
 
     return (
         <ProductCard
-            item={product}
+            product={product}
             path={path}
             actionSlot={actionSlot}
         />
