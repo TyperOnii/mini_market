@@ -1,6 +1,6 @@
-import { NavigationLink } from "@/shared/types/navigation-link.types";
+import { HeaderNavLink } from "../types/header-nav-link.types";
 
-export const HEADER_NAV_MENU_CONFIG: NavigationLink[] = [
+export const HEADER_NAV_MENU_CONFIG: HeaderNavLink[] = [
     {
         label: 'Заказы',
         href: '/',
@@ -13,4 +13,9 @@ export const HEADER_NAV_MENU_CONFIG: NavigationLink[] = [
         label: 'Профиль',
         href: '/',
     },
-]
+    {
+        label: 'Корзина',
+        href: '/cart',
+        withCounter: true,
+    },
+] as const;
