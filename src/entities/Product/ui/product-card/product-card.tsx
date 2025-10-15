@@ -15,16 +15,15 @@ export const ProductCard = (props: ProductCardProps) => {
     const { item, path, actionSlot } = props;
 
     const renderPrice = () => {
-        const { price, discountedPrice } = item;
-        if(discountedPrice && discountedPrice < price) {
+        if(item.discountedPrice && item.discountedPrice < item.price) {
             return (
                 <>
-                    <span className={s.discountPrice} aria-label={`Цена со скидкой: ${discountedPrice} ₽`}>{discountedPrice} ₽</span>
-                    <span className={s.priceLined} aria-label={`Старая цена: ${price} ₽`}>{price} ₽</span>
+                    <span className={s.discountPrice} aria-label={`Цена со скидкой: ${item.discountedPrice} ₽`}>{item.discountedPrice} ₽</span>
+                    <span className={s.priceLined} aria-label={`Старая цена: ${item.price} ₽`}>{item.price} ₽</span>
                 </>
             )
         }
-        return <span className={s.price} aria-label='Цена'>{price} ₽</span>
+        return <span className={s.price} aria-label='Цена'>{item.price} ₽</span>
     }
 
     return (

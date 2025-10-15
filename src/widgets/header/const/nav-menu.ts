@@ -7,7 +7,7 @@ export const HEADER_NAV_MENU_CONFIG: HeaderNavLink[] = [
     },
     {
         label: 'Вишлист',
-        href: '/',
+        href: '/wishlist',
     },
     {
         label: 'Профиль',

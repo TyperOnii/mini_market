@@ -1,5 +1,5 @@
 import { Product, ProductList } from "@/entities/Product";
-import { BuyerProductCard } from "@/features/add-to-cart";
+import { BuyerProductCard } from "@/widgets/buyer-product-card";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
       <div className="container">
-        <ProductList list={list} path={'/'} renderCard={(product) => <BuyerProductCard item={product} path={'/'}/>}/>
+        <ProductList list={list} path={'/'} renderCard={(product) => <BuyerProductCard product={product} path={'/'}/>}/>
       </div>
   );
 }

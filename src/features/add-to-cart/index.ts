@@ -1,1 +1,1 @@
-export { BuyerProductCard } from './ui/buyer-product-card'
+export { AddToCartButton } from './ui/add-to-cart-button'
