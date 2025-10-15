@@ -1,14 +1,9 @@
-'use client'
-
 import Link from 'next/link'
 import s from './header.module.scss'
-import { observer } from 'mobx-react'
-import { CartStore } from '@/entities/Cart'
 import { HEADER_NAV_MENU_CONFIG } from '../const/nav-menu'
+import { CartItemsCounter } from '@/entities/Cart'
 
-export const Header = observer(() => {
-    const { isEmpty, totalQuantity } = CartStore;
-
+export const Header = () => {
     const renderMenu = () => {
         return (
             <nav className={s.header_menu}>
@@ -20,7 +15,7 @@ export const Header = observer(() => {
                     ))}
                     <li>
                         <Link href='/cart'>
-                            Корзина {!isEmpty && <span className={s.counter}>{totalQuantity}</span>}
+                            Корзина <CartItemsCounter/>
                         </Link>
                     </li>
                 </ul>
@@ -38,4 +33,4 @@ export const Header = observer(() => {
             </div>
         </header>
     )
-})
+}
