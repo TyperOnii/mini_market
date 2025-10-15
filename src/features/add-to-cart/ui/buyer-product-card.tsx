@@ -13,23 +13,34 @@ interface BuyerProductCardProps {
 
 export const BuyerProductCard = observer((props: BuyerProductCardProps) => {
     const { item, path } = props;
-    const { addCartItem, removeCartItem, cartItems } = CartStore;
+    const { addCartItem, removeCartItem, existenceCheck } = CartStore;
 
-    const productInCart = cartItems.find((product) => product.id === item.id);
+    const isProductInCart = existenceCheck(item.id);
 
-    const handleAddToCart = () => {
-        if(productInCart) {
+    const handleClick = () => {
+        if(isProductInCart) {
             removeCartItem(item.id);
-            return;
+            return
         }
-        addCartItem(item)
+        addCartItem(item);
     }
+
+    const buttonStyle = isProductInCart ? 'secondary' : 'primary';
+    const buttonLabel = isProductInCart ? 'Удалить' : 'В корзину';
 
     return (
         <ProductCard
-        item={item}
-        path={path}
-        actionSlot={<Button variant={productInCart ? 'secondary' :'primary'} onClick={handleAddToCart}>{productInCart ? 'Удалить' : 'В корзину'}</Button>}
+            item={item}
+            path={path}
+            actionSlot={
+            <Button 
+                aria-label={isProductInCart ? 'Кнопка для удаления товара из корзины' : 'Кнопка для добавления товара в корзину'}
+                title={isProductInCart ? 'Удалить товар из корзины' : 'Добавить товар в корзину'}
+                variant={buttonStyle} 
+                onClick={handleClick}
+                >
+                {buttonLabel}
+            </Button>}
         />
     )
 })
